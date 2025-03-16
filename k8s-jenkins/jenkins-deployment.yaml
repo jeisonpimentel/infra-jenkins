@@ -12,14 +12,29 @@ spec:
       labels:
         app: jenkins
     spec:
+      securityContext:
+        fsGroup: 1000  # 💡 Asegura que el grupo de Jenkins tenga permisos en el volumen
+
+      initContainers:
+        - name: volume-permissions
+          image: busybox
+          command: ["sh", "-c", "chown -R 1000:1000 /var/jenkins_home && chmod -R 777 /var/jenkins_home"]
+          volumeMounts:
+            - mountPath: "/var/jenkins_home"
+              name: jenkins-home
+
       containers:
         - name: jenkins
           image: jenkins/jenkins:lts
+          securityContext:
+            runAsUser: 1000  # 💡 Ejecutar Jenkins con el usuario correcto
+            fsGroup: 1000
           ports:
             - containerPort: 8080
           volumeMounts:
-            - name: jenkins-home
-              mountPath: /var/jenkins_home
+            - mountPath: "/var/jenkins_home"
+              name: jenkins-home
+
       volumes:
         - name: jenkins-home
           persistentVolumeClaim:
