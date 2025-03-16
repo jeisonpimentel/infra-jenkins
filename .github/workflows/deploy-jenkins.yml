@@ -1,4 +1,4 @@
-name: Deploy Jenkins to GKE
+name: Deploy jenkins to GKE
 
 on:
   push:
