@@ -13,8 +13,9 @@ spec:
         app: jenkins
     spec:
       securityContext:
-        fsGroup: 1000 
-        
+        fsGroup: 1000
+      restartPolicy: Always
+
       initContainers:
         - name: volume-permissions
           image: busybox
@@ -33,6 +34,13 @@ spec:
           volumeMounts:
             - mountPath: "/var/jenkins_home"
               name: jenkins-home
+          resources:
+            requests:
+              memory: "512Mi" 
+              cpu: "250m"    
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
 
       volumes:
         - name: jenkins-home

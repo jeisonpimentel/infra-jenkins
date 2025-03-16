@@ -32,7 +32,7 @@ jobs:
 
       - name: Configure kubectl
         run: |
-          gcloud container clusters get-credentials cluster-gke-first --region=us-central1
+          gcloud container clusters get-credentials cluster-gke-standard --region=us-west1
           kubectl cluster-info
 
       - name: Deploy Jenkins to GKE
