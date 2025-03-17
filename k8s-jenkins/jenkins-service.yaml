@@ -4,9 +4,9 @@ metadata:
   name: jenkins-service
 spec:
   type: LoadBalancer
-  loadBalancerIP: jenkins-ip
+  loadBalancerIP: 34.54.6.229
   ports:
-    - port: 80
+    - port: 8080
       targetPort: 8080
   selector:
     app: jenkins

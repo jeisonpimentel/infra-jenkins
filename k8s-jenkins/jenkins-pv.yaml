@@ -8,4 +8,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: standard-rwo
+  gcePersistentDisk:
+    pdName: jenkins-disk 
+    fsType: ext4
