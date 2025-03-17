@@ -6,7 +6,7 @@ spec:
   type: LoadBalancer
   loadBalancerIP: 34.54.6.229
   ports:
-    - port: 8080
+    - port: 80
       targetPort: 8080
   selector:
     app: jenkins
