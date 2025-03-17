@@ -3,8 +3,7 @@ kind: Service
 metadata:
   name: jenkins-service
 spec:
-  type: LoadBalancer
-  loadBalancerIP: 34.54.6.229
+  type: ClusterIP
   ports:
     - port: 80
       targetPort: 8080
