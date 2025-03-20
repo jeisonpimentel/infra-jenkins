@@ -41,4 +41,4 @@ jobs:
           kubectl apply -f k8s-jenkins/services/
           kubectl apply -f k8s-jenkins/deployments/
           
-          kubectl rollout status deployment/jenkins
+          kubectl rollout status deployment/jenkins -n dev
